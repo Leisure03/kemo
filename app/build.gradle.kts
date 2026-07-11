@@ -1,5 +1,19 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android.plugin)
+}
+
+// KSP 参数，替代原来kapt的配置
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+// AGP9内置Kotlin专用编译配置，替代android.kotlinOptions
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    }
 }
 
 android {
@@ -9,7 +23,10 @@ android {
             minorApiLevel = 1
         }
     }
-
+// 开启 ViewBinding
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.hzr.kemo"
         minSdk = 24
@@ -34,10 +51,36 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+    // Hilt：kapt → ksp
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+
+    // Room：kapt → ksp
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
+
+    // Coroutines 与 Flow
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Lifecycle ViewModel
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.bravh)
+    implementation(libs.viewbinding.ktx)
+    implementation(libs.viewbinding.base)
+    implementation(libs.viewbinding.brvah)
+    implementation(libs.viewpager2)
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.cio)
+    implementation(libs.timber)
 }
