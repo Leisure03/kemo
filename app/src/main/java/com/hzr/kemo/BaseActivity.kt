@@ -8,8 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewbinding.ViewBinding
 import com.dylanc.viewbinding.base.ViewBindingUtil
+import dagger.hilt.android.AndroidEntryPoint
 
-open class BaseActivity<VB : ViewBinding>(@LayoutRes layoutId: Int) : AppCompatActivity(layoutId) {
+
+open class BaseActivity<VB : ViewBinding>() : AppCompatActivity() {
 
     lateinit var binding: VB
 
@@ -17,14 +19,13 @@ open class BaseActivity<VB : ViewBinding>(@LayoutRes layoutId: Int) : AppCompatA
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ViewBindingUtil.inflateWithGeneric(this, layoutInflater)
-
+        setContentView(binding.root)
         // 全局统一设置系统栏边距适配，所有子Activity自动生效
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         initView()
         initListeners()
         observeFlow()

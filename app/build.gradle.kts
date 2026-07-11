@@ -26,6 +26,7 @@ android {
 // 开启 ViewBinding
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     defaultConfig {
         applicationId = "com.hzr.kemo"

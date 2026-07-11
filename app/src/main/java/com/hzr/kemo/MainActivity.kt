@@ -1,28 +1,33 @@
 package com.hzr.kemo
 
 import android.os.Bundle
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.dylanc.viewbinding.binding
+import android.util.Log
 import com.hzr.kemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
+import kotlin.random.Random
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
     override fun initView() {
-        super.initView()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
     }
 
-    override fun initListeners() {}
+    override fun initListeners() {
+        binding.btnWatermelon.setOnClickListener {
+            val num = Random.nextInt(2)
+            Timber.tag("tag").d(num.toString())
+            binding.imgWatermelon.apply {
+                when(num){
+                    0 -> this.setImageResource(R.mipmap.bad_watermelon)
+                    1 -> this.setImageResource(R.mipmap.good_watermelon)
+                }
+            }
+        }
+    }
     override fun observeFlow() {}
 }
