@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 增加四周内边距，将其整体压缩入 192dp 的安全圆形可视区域中 -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@mipmap/app_icon"
+    android:insetLeft="36dp"
+    android:insetRight="36dp"
+    android:insetTop="36dp"
+    android:insetBottom="36dp" />

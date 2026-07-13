@@ -13,4 +13,15 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Kemo.Starting" parent="Theme.SplashScreen">
+        <!-- 奶茶奶油底色启动页背景 -->
+        <item name="windowSplashScreenBackground">@color/splash_color</item>
+        <!-- 奶茶图标 -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_icon</item>
+        <!-- 启动动画时长1秒 -->
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <!-- 启动页消失后，自动切换回主主题Theme.Kemo -->
+        <item name="postSplashScreenTheme">@style/Theme.Kemo</item>
+    </style>
 </resources>
