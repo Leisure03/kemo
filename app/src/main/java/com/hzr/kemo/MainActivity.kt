@@ -18,16 +18,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initListeners() {
-        binding.btnWatermelon.setOnClickListener {
-            val num = Random.nextInt(2)
-            Timber.tag("tag").d(num.toString())
-            binding.imgWatermelon.apply {
-                when(num){
-                    0 -> this.setImageResource(R.mipmap.bad_watermelon)
-                    1 -> this.setImageResource(R.mipmap.good_watermelon)
-                }
-            }
-        }
+
     }
     override fun observeFlow() {}
 }
