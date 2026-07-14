@@ -28,28 +28,27 @@
 
             <com.google.android.material.search.SearchBar
                 android:id="@+id/search_bar"
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="0dp"
+                android:layout_weight="1"
                 android:backgroundTint="@color/color_search"
-                android:hint="喝点什么呢？"
+                android:hint="@string/drink_something"
                 android:outlineAmbientShadowColor="#262C2C2C"
                 android:outlineSpotShadowColor="#4D2C2C2C"
                 app:elevation="14dp"
-                app:navigationIcon="@android:drawable/ic_menu_search"
-                >
+                app:navigationIcon="@android:drawable/ic_menu_search">
             </com.google.android.material.search.SearchBar>
-
-
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_avatar"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="用户头像"
+                android:contentDescription="@string/user_avatar"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/user_avatar"
                 app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
@@ -61,26 +60,110 @@
     <!-- 这里可以放置主界面的正常业务逻辑布局，比如轮播图、饮品列表等 -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <com.youth.banner.Banner
                 android:id="@+id/banner_drink"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginEnd="16dp"
-                app:banner_indicator_space="10dp"
-                app:banner_indicator_selected_width="10dp"
-                app:banner_indicator_selected_color="#F7A37E"
                 app:banner_indicator_normal_color="#D8D8D8"
+                app:banner_indicator_selected_color="#F7A37E"
+                app:banner_indicator_selected_width="10dp"
+                app:banner_indicator_space="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 图标 1 (鲜奶)：链头，设置 chainStyle="spread" 以及统一的 top 约束与间距 -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_milk"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:background="@mipmap/categories_fresh_milk"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/img_fruit_tea"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/banner_drink"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <TextView
+                android:id="@+id/tv_milk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/milk"
+                app:layout_constraintEnd_toEndOf="@+id/img_milk"
+                app:layout_constraintStart_toStartOf="@+id/img_milk"
+                app:layout_constraintTop_toBottomOf="@id/img_milk" />
+            <!-- 图标 2 (果茶)：向左连接 img_milk，向右连接 img_milk_tea -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_fruit_tea"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/categories_fruit_tea"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/img_milk_tea"
+                app:layout_constraintStart_toEndOf="@+id/img_milk"
+                app:layout_constraintTop_toTopOf="@+id/img_milk"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <TextView
+                android:id="@+id/tv_fruit_tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fruit_tea"
+                app:layout_constraintEnd_toEndOf="@+id/img_fruit_tea"
+                app:layout_constraintStart_toStartOf="@+id/img_fruit_tea"
+                app:layout_constraintTop_toBottomOf="@+id/img_fruit_tea" />
+            <!-- 图标 3 (奶茶)：向左连接 img_fruit_tea，向右连接 img_limited_edition -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_milk_tea"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/categories_milk_tea"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toStartOf="@+id/img_limited_edition"
+                app:layout_constraintStart_toEndOf="@+id/img_fruit_tea"
+                app:layout_constraintTop_toTopOf="@+id/img_milk"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
+
+            <TextView
+                android:id="@+id/tv_milk_tea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/milk_tea"
+                app:layout_constraintEnd_toEndOf="@+id/img_milk_tea"
+                app:layout_constraintStart_toStartOf="@+id/img_milk_tea"
+                app:layout_constraintTop_toBottomOf="@+id/img_milk_tea" />
+
+            <!-- 图标 4 (限定)：链尾，向左连接 img_milk_tea，向右连接父容器右边界 -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_limited_edition"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/categories_limit_edition"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_milk_tea"
+                app:layout_constraintTop_toTopOf="@+id/img_milk"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"/>
+
+            <TextView
+                android:id="@+id/tv_limited_edition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/limit"
+                app:layout_constraintEnd_toEndOf="@+id/img_limited_edition"
+                app:layout_constraintStart_toStartOf="@+id/img_limited_edition"
+                app:layout_constraintTop_toBottomOf="@+id/img_limited_edition" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -90,7 +173,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:backgroundTint="@color/color_search"
-        android:hint="搜搜看吧！"
+        android:hint="@string/try_to_search"
         app:layout_anchor="@id/search_bar"
         tools:visibility="gone">
 
@@ -102,5 +185,4 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </com.google.android.material.search.SearchView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

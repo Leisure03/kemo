@@ -30,8 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
     override fun initView() {
         logd("MainActivity initView: 初始化轮播图基础样式")
-        val banner = binding.bannerDrink
-        banner.apply {
+            binding.bannerDrink.apply {
             adapter = carouselAdapter
             //添加banner生命周期观察者,让banner自己掌握生命周期
             addBannerLifecycleObserver(this@MainActivity)

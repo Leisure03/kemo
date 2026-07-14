@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">kemo</string>
+    <string name="drink_something">喝点什么呢？</string>
+    <string name="milk">牛奶</string>
+    <string name="fruit_tea">果茶</string>
+    <string name="milk_tea">奶茶</string>
+    <string name="limit">限定</string>
+    <string name="try_to_search">搜搜看吧！</string>
+    <string name="user_avatar">用户头像</string>
 </resources>
