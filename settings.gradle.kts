@@ -20,6 +20,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven("https://www.jitpack.io")
+        maven("https://s01.oss.sonatype.org/content/groups/public")
     }
 }
 

@@ -90,4 +90,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.timber)
     implementation(libs.splash)
+    implementation(libs.youth.banner)
+    implementation(libs.glide)
 }
