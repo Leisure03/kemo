@@ -8,10 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="splash_color">#FFF5E8</color>
-    <color name="bg_color">#FEF7E7</color>
+    <color name="bg_color">#FEF7E5</color>
     <color name="color_search">#FFFFFD</color>
     <color name="color_fresh_milk">#B9E2CE</color>
     <color name="color_fruit_tea">#FACA7E</color>
     <color name="color_milk_tea">#E3C096</color>
     <color name="color_limit_edition">#FBB495</color>
+    <color name="outlineAmbientShadowColor">#262C2C2C</color>
+    <color name="outlineSpotShadowColor">#4D2C2C2C</color>
+    <color name="select_star">#FFCD00</color>
+    <color name="unselect_star">#DDDDDD</color>
 </resources>

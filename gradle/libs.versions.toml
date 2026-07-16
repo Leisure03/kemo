@@ -1,6 +1,7 @@
 [versions]
 agp = "9.2.1"
 # AGP9内置Kotlin固定2.2.10，必须改，2.1.10会报错
+materialratingbar = "1.4.0"
 kotlin = "2.2.10"
 # KSP版本必须和kotlin完全对齐 2.2.10-xxx
 ksp = "2.2.10-2.0.2"
@@ -28,6 +29,7 @@ kotlinxSerializationJson = "1.11.0"
 banner = "2.2.3"
 glide = "4.16.0"
 [libraries]
+materialratingbar = { group = "me.zhanghai.android.materialratingbar",name = "library",version.ref = "materialratingbar" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

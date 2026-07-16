@@ -1,0 +1,12 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="30"
+    android:viewportHeight="24">
+    <!-- 同样将 viewportWidth 调大到 30，并平移 3 -->
+    <group android:translateX="3">
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M12,15.39L10.24,20.13L14.27,17.2L12,15.39ZM19.76,20.13L18,15.39L15.73,17.2L19.76,20.13ZM22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24ZM12,14.68L8.65,17.11L9.91,13.23L6.63,10.85L10.68,10.85L12,6.97L13.32,10.85L17.37,10.85L14.09,13.23L15.35,17.11L12,14.68Z" />
+    </group>
+</vector>

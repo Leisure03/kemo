@@ -1,13 +1,12 @@
 package com.hzr.kemo.adapter
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hzr.kemo.R
-import com.hzr.kemo.bindImage
+import com.hzr.kemo.ext.bindImage
 import com.hzr.kemo.databinding.ItemCarouselBinding
-import com.hzr.kemo.logd
+import com.hzr.kemo.ext.logd
 import com.hzr.kemo.model.BannerEntity
 import com.youth.banner.adapter.BannerAdapter
 

@@ -2,12 +2,12 @@ package com.hzr.kemo
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewbinding.ViewBinding
 import com.dylanc.viewbinding.base.ViewBindingUtil
+import com.hzr.kemo.ext.logd
 
 
 open class BaseActivity<VB : ViewBinding>() : AppCompatActivity() {

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDF9F3"
+    android:background="@color/bg_color"
     tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -35,8 +35,8 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/color_search"
                 android:hint="@string/drink_something"
-                android:outlineAmbientShadowColor="#262C2C2C"
-                android:outlineSpotShadowColor="#4D2C2C2C"
+                android:outlineAmbientShadowColor="@color/outlineAmbientShadowColor"
+                android:outlineSpotShadowColor="@color/outlineSpotShadowColor"
                 app:elevation="14dp"
                 app:navigationIcon="@android:drawable/ic_menu_search">
             </com.google.android.material.search.SearchBar>
@@ -45,8 +45,8 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/user_avatar"
                 android:scaleType="centerCrop"
@@ -99,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/milk"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/img_milk"
                 app:layout_constraintStart_toStartOf="@+id/img_milk"
                 app:layout_constraintTop_toBottomOf="@id/img_milk" />
@@ -119,6 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fruit_tea"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/img_fruit_tea"
                 app:layout_constraintStart_toStartOf="@+id/img_fruit_tea"
                 app:layout_constraintTop_toBottomOf="@+id/img_fruit_tea" />
@@ -139,6 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/milk_tea"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/img_milk_tea"
                 app:layout_constraintStart_toStartOf="@+id/img_milk_tea"
                 app:layout_constraintTop_toBottomOf="@+id/img_milk_tea" />
@@ -160,10 +163,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/limit"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/img_limited_edition"
                 app:layout_constraintStart_toStartOf="@+id/img_limited_edition"
                 app:layout_constraintTop_toBottomOf="@+id/img_limited_edition" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_drink_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/img_limited_edition"
+                app:layout_constraintStart_toStartOf="@+id/img_milk"
+                app:layout_constraintTop_toBottomOf="@+id/tv_milk"
+                tools:layout_height="300dp"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

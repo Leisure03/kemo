@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="36dp"
+    android:viewportWidth="30"
+    android:viewportHeight="24">
+    <!-- 原库的 viewportWidth 为 24。这里我们放大到 30，并在 group 中向右平移 3 (translateX="3") -->
+    <!-- 这样相当于给每个星星左右各增加了 3 个单位的透明间距 -->
+    <group android:translateX="3">
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+    </group>
+</vector>

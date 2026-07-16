@@ -92,4 +92,5 @@ dependencies {
     implementation(libs.splash)
     implementation(libs.youth.banner)
     implementation(libs.glide)
+    implementation(libs.materialratingbar)
 }

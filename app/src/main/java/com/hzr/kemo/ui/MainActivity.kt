@@ -8,13 +8,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.hzr.kemo.BaseActivity
 import com.hzr.kemo.adapter.CarouselAdapter
 import com.hzr.kemo.databinding.ActivityMainBinding
-import com.hzr.kemo.logd
+import com.hzr.kemo.ext.logd
 import com.hzr.kemo.model.BannerEntity
 
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -54,7 +53,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 // 1. 真实架构下，这里你一般会通过 viewModel.bannerFlow.collect { list -> ... } 来收集网络结果
                 // 2. 为了让你现在的代码能跑通测试，我用协程模拟一个“从真实网络请求2秒后返回结果”的过程：
 
-
                 val realNetworkDataFromApi = listOf(
                     BannerEntity(id = 1, imgSrc = "https://picsum.photos/id/102/600/400"),
                     BannerEntity(id = 2, imgSrc = "https://picsum.photos/id/103/600/400"),
@@ -69,9 +67,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-
-
-    private fun eatFood(){
-
-    }
 }
