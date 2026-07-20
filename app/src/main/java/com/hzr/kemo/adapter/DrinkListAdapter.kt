@@ -7,6 +7,7 @@ import android.widget.BaseAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.hzr.kemo.databinding.ItemDrinkBinding
+import com.hzr.kemo.ext.bindImage
 import com.hzr.kemo.model.DrinkListEntity
 
 class DrinkListAdapter : BaseQuickAdapter<DrinkListEntity, DrinkListAdapter.DrinkListVH>() {
@@ -29,11 +30,13 @@ class DrinkListAdapter : BaseQuickAdapter<DrinkListEntity, DrinkListAdapter.Drin
     ) {
         item?.let {
            holder.binding.apply {
-               colorView.setBackgroundColor(item.bgColor)
+               colorView.setBackgroundColor(item.bgColor.toInt())
                tvName.text = item.title
                tvDesc.text = item.desc
-               tvPrice.text = item.price.toString()
-               tvScore.text = item.likeStar.toString()
+               tvPrice.text = "￥${item.price}"
+               tvScore.text = "(${item.likeStar})"
+               materialRatingBar.rating = item.likeStar.toFloat()
+               imgDrink.bindImage(item.imgSrc)
            }
         }
 

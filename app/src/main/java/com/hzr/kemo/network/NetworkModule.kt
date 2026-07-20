@@ -2,6 +2,7 @@ package com.hzr.kemo.network
 
 import com.hzr.kemo.api.DrinkListApiService
 import com.hzr.kemo.repository.DrinkListRepository
+import com.hzr.kemo.repository.IDrinkListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,7 @@ object NetworkModule {
     }
 
     @Provides
-    fun provideDrinkListRepository(apiService: DrinkListApiService): DrinkListRepository {
+    fun provideDrinkListRepository(apiService: DrinkListApiService): IDrinkListRepository {
         return DrinkListRepository(apiService)
     }
 }

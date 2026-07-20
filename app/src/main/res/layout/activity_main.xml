@@ -168,15 +168,18 @@
                 app:layout_constraintStart_toStartOf="@+id/img_limited_edition"
                 app:layout_constraintTop_toBottomOf="@+id/img_limited_edition" />
 
+            <!-- 在 NestedScrollView 中，RecyclerView 高度须为 wrap_content 才能正常计算展开并防止高度坍塌，同时关闭内层滑动 -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_drink_list"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/img_limited_edition"
                 app:layout_constraintStart_toStartOf="@+id/img_milk"
                 app:layout_constraintTop_toBottomOf="@+id/tv_milk"
-                tools:layout_height="300dp"/>
+                tools:layout_height="300dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

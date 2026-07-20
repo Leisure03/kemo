@@ -1,115 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- 必须使用 wrap_content/固定高度，避免单个 Item 霸占整屏高度 -->
+<!-- 采用极简平面风格 (Flat Design)，设置 elevation=0dp 彻底抛弃阴影，避免 ROM 渲染缺陷 -->
+<!-- 除去原有多余的外层壳，将 MaterialCardView 作为根层级，内部仅保留唯一一层 ConstraintLayout -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="160dp"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
     tools:background="@color/bg_color">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/color_view"
+            android:layout_width="165dp"
+            android:layout_height="165dp"
+            android:layout_marginStart="5dp"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraLarge"
+            tools:background="#CE9F75" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_drink"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:paddingBottom="20dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/color_view"
+            app:layout_constraintEnd_toEndOf="@+id/color_view"
+            app:layout_constraintStart_toStartOf="@+id/color_view"
+            app:layout_constraintTop_toTopOf="@+id/color_view"
+            tools:src="@mipmap/drink_tea2" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/color_view"
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:layout_marginStart="5dp"
-                android:padding="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraLarge"
-                tools:background="#CE9F75">
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/color_view"
+            app:layout_constraintTop_toTopOf="@+id/color_view"
+            tools:text="黑糖啵啵奶茶" />
 
+        <!-- 将宽度设置为0dp并绑定右侧约束与边距，让文本严格限制在安全区域内自动折行 -->
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="木薯珍珠、古法熬煮黑糖、醇鲜牛乳" />
 
-            </com.google.android.material.imageview.ShapeableImageView>
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/materialRatingBar"
+            style="@style/Widget.MaterialRatingBar.RatingBar"
+            android:layout_width="100dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="2dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="3.5"
+            android:stepSize="0.5"
+            app:layout_constraintBottom_toTopOf="@+id/tv_price"
+            app:layout_constraintStart_toStartOf="@+id/tv_desc"
+            app:mrb_progressBackgroundTint="@color/unselect_star"
+            app:mrb_progressTint="@color/select_star"
+            app:mrb_secondaryProgressTint="@color/select_star" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:paddingBottom="20dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="@+id/color_view"
-                app:layout_constraintEnd_toEndOf="@+id/color_view"
-                app:layout_constraintStart_toStartOf="@+id/color_view"
-                app:layout_constraintTop_toTopOf="@+id/color_view"
-                tools:src="@mipmap/drink_tea2" />
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/materialRatingBar"
+            app:layout_constraintStart_toEndOf="@+id/materialRatingBar"
+            app:layout_constraintTop_toTopOf="@+id/materialRatingBar"
+            tools:text="(3)" />
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:letterSpacing="-0.04"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/materialRatingBar"
+            tools:text="￥23" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                android:layout_marginTop="16dp"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/color_view"
-                app:layout_constraintTop_toTopOf="@+id/color_view"
-                tools:text="黑糖啵啵奶茶" />
-
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxEms="13"
-                android:maxLines="2"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_name"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name"
-                tools:text="木薯珍珠、古法熬煮黑糖、醇鲜牛乳" />
-
-            <me.zhanghai.android.materialratingbar.MaterialRatingBar
-                android:id="@+id/materialRatingBar"
-                style="@style/Widget.MaterialRatingBar.RatingBar"
-                android:layout_width="100dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="10dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="3.5"
-                app:mrb_progressTint="@color/select_star"
-                app:mrb_secondaryProgressTint="@color/select_star"
-                app:mrb_progressBackgroundTint="@color/unselect_star"
-                android:stepSize="0.5"
-                app:layout_constraintStart_toStartOf="@+id/tv_desc"
-                app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
-
-            <TextView
-                android:id="@+id/tv_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/materialRatingBar"
-                app:layout_constraintStart_toEndOf="@+id/materialRatingBar"
-                app:layout_constraintTop_toTopOf="@+id/materialRatingBar"
-                tools:text="(3)" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="@+id/materialRatingBar"
-                app:layout_constraintTop_toBottomOf="@+id/materialRatingBar"
-                android:textStyle="bold"
-                android:letterSpacing="-0.04"
-                tools:text="￥23" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

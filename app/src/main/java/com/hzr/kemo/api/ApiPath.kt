@@ -1,5 +1,7 @@
 package com.hzr.kemo.api
 
 object ApiPath {
-    const val DRINK_LIST = "drink/list"
+    const val BASE_URL = "http://192.168.1.3:8000/api/"
+    const val DRINK_LIST = "drink"
+    const val DRINK_DETAIL = "drink/detail"
 }

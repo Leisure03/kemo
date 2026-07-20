@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class DrinkListEntity (
     val id: Int,
     val category: String,
-    val bgColor: Int,
+    val bgColor: Long,
     val imgSrc:String,
     val title: String,
     val desc: String,
