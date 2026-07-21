@@ -7,70 +7,44 @@
     android:background="@color/bg_color"
     tools:context=".ui.MainActivity">
 
-    <!-- ========== 顶部常态栏：SearchBar + 头像 ========== -->
-    <LinearLayout
-        android:id="@+id/ll_top_bar"
-        android:layout_width="match_parent"
+    <!-- ========== 顶部：SearchBar 扁平化（无LinearLayout包裹） ========== -->
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/search_bar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.search.SearchBar
-            android:id="@+id/search_bar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="0dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/color_search"
-            android:hint="@string/drink_something"
-            android:outlineAmbientShadowColor="@color/outlineAmbientShadowColor"
-            android:outlineSpotShadowColor="@color/outlineSpotShadowColor"
-            app:elevation="14dp"
-            app:navigationIcon="@android:drawable/ic_menu_search"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_avatar"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/user_avatar"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/user_avatar"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" />
-
-    </LinearLayout>
-
-    <!-- ========== 搜索展开面板 SearchView（重点！和SearchBar绑定） ========== -->
-    <com.google.android.material.search.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/color_search"
+        android:hint="@string/drink_something"
+        android:outlineAmbientShadowColor="@color/outlineAmbientShadowColor"
+        android:outlineSpotShadowColor="@color/outlineSpotShadowColor"
+        app:elevation="14dp"
+        app:navigationIcon="@android:drawable/ic_menu_search"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/iv_avatar"/>
 
-        <!-- 这里放搜索页面内容：搜索建议、历史记录、搜索结果列表 -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_search_result"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp" />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/user_avatar"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/user_avatar"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/search_bar"
+        app:layout_constraintBottom_toBottomOf="@id/search_bar"/>
 
-    </com.google.android.material.search.SearchView>
 
     <!-- ========== 主体滚动区域 ========== -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintTop_toBottomOf="@id/ll_top_bar">
+        app:layout_constraintTop_toBottomOf="@id/search_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -80,6 +54,7 @@
                 android:id="@+id/banner_drink"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_marginTop="20dp"
                 app:banner_indicator_normal_color="#D8D8D8"
                 app:banner_indicator_selected_color="#F7A37E"
                 app:banner_indicator_selected_width="10dp"
