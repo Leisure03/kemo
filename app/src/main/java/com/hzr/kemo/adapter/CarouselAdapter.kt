@@ -38,7 +38,6 @@ class CarouselAdapter(
         // 核心逻辑：使用当前索引 position 对列表长度取模，安全取出对应位置的图片资源 ID
         holder?.binding?.ivDrink?.bindImage(
             url = data?.imgSrc,
-            placeholderRes = R.mipmap.carousel_1, // 加载过程中可以用之前本地的图当作占位符
             cornerRadius = 45
         )
 

@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- 将导航栏的全局默认样式指向第二层 -->
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="Theme.Kemo.Starting" parent="Theme.SplashScreen">
@@ -23,5 +25,26 @@
         <item name="windowSplashScreenAnimationDuration">1000</item>
         <!-- 启动页消失后，自动切换回主主题Theme.Kemo -->
         <item name="postSplashScreenTheme">@style/Theme.Kemo</item>
+    </style>
+
+    <!-- 第二层：专属于 BottomNavigationView 的 Widget 样式 -->
+    <!-- 它继承自系统的导航栏样式，只对控件自身的属性（如字体大小、高度等）负责，并在这一层挂载局部主题覆盖 -->
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <!-- 核心绑定：通过 materialThemeOverlay 将第三层的“私有颜色沙盒”套给这个控件 -->
+        <item name="itemRippleColor">#26113826</item>
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <!-- 第三层：真正的“主题覆盖” (ThemeOverlay) -->
+    <!-- 绝对没有 parent，或者是空的 parent。这里定义的颜色只会在这个“沙盒”内生效 -->
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <!-- 替换底色：只在导航栏内部生效 -->
+<!--        <item name="colorSurface">@color/nav_surface_bg</item>-->
+        <!-- 替换选中后的药丸背景颜色：只在导航栏内部生效 -->
+        <item name="colorSecondaryContainer">#BDE3CE</item>
+        <!-- 替换选中时的图标和文字颜色 -->
+<!--        <item name="colorOnSecondaryContainer">@color/nav_selected_content</item>-->
+        <!-- 替换未选中时的图标和文字颜色 -->
+<!--        <item name="colorOnSurfaceVariant">@color/nav_unselected_content</item>-->
     </style>
 </resources>

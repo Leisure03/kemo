@@ -201,4 +201,11 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </com.google.android.material.search.SearchView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:itemIconSize="26dp"
+        app:backgroundTint="@color/white"
+        app:menu="@menu/bottom_navigation_menu" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

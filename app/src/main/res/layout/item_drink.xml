@@ -106,6 +106,27 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/materialRatingBar"
             tools:text="￥23" />
+
+        <!-- 核心设置：将insets和padding设为0dp避免图标挤压，cornerRadius设为宽高的一半 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddToCart"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:backgroundTint="#EEA07A"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            app:cornerRadius="18dp"
+            app:icon="@drawable/icon_add"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
