@@ -5,8 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.chad.library.adapter4.loadState.LoadState
 import com.hzr.kemo.ext.logd
 import com.hzr.kemo.ext.loge
+import com.hzr.kemo.model.BannerEntity
 import com.hzr.kemo.model.DrinkListEntity
-import com.hzr.kemo.repository.DrinkListRepository
 import com.hzr.kemo.repository.IDrinkListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 data class UiState(
     val pageState: LoadState = LoadState.None,
-    val drinkList: List<DrinkListEntity> = emptyList()
+    val drinkList: List<DrinkListEntity> = emptyList(),
+    val carousels: List<BannerEntity> = emptyList()
 )
 sealed class UiEvent(){
     data class ShowToast(val msg: Int)
@@ -32,8 +33,12 @@ class MainViewModel @Inject constructor(
 
     init {
         fetchDrinkList()
+        fetchCarouselPics()
     }
 
+    /**
+     * 获取主页奶茶列表
+     */
     fun fetchDrinkList() {
         viewModelScope.launch {
             _uiState.update { it.copy(pageState = LoadState.Loading) }
@@ -41,6 +46,22 @@ class MainViewModel @Inject constructor(
                 logd("获取到主页奶茶列表数据${result}")
                 _uiState.update { it.copy(drinkList = result, pageState = LoadState.NotLoading.Complete) }
             }.onFailure { error ->
+                loge(error)
+                _uiState.update { it.copy(pageState = LoadState.Error(error)) }
+            }
+        }
+    }
+
+    /**
+     * 获取主页轮播图列表
+     */
+    fun fetchCarouselPics(){
+        viewModelScope.launch {
+            _uiState.update { it.copy(pageState = LoadState.Loading) }
+            drinkListRepository.getCarousePics().onSuccess { carousels ->
+                logd("获取到轮播图列表${carousels}")
+                _uiState.update { it.copy(carousels = carousels, pageState = LoadState.NotLoading.Complete) }
+            }.onFailure { error->
                 loge(error)
                 _uiState.update { it.copy(pageState = LoadState.Error(error)) }
             }

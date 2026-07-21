@@ -1,5 +1,6 @@
 package com.hzr.kemo.api
 
+import com.hzr.kemo.model.BannerEntity
 import com.hzr.kemo.model.DrinkListEntity
 import com.hzr.kemo.model.KemoResponse
 import io.ktor.client.HttpClient
@@ -13,4 +14,9 @@ class DrinkListApiService @Inject constructor(
     suspend fun getDrinkList(): KemoResponse<List<DrinkListEntity>> {
         return client.get(ApiPath.DRINK_LIST).body()
     }
+
+    suspend fun getCarouselList(): KemoResponse<List<BannerEntity>>{
+        return client.get(ApiPath.CAROUSEL_LIST).body()
+    }
+
 }

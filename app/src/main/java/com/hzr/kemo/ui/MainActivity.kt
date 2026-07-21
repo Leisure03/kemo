@@ -50,7 +50,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         binding.rvDrinkList.apply {
             adapter = drinkListAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL,false)
+            layoutManager = LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
         }
 
     }
@@ -74,19 +74,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                // 1. 真实架构下，这里你一般会通过 viewModel.bannerFlow.collect { list -> ... } 来收集网络结果
-                // 2. 为了让你现在的代码能跑通测试，我用协程模拟一个“从真实网络请求2秒后返回结果”的过程：
                 launch {
-                    val realNetworkDataFromApi = listOf(
-                        BannerEntity(id = 1, imgSrc = "https://picsum.photos/id/102/600/400"),
-                        BannerEntity(id = 2, imgSrc = "https://picsum.photos/id/103/600/400"),
-                        BannerEntity(id = 3, imgSrc = "https://picsum.photos/id/104/600/400"),
-                        BannerEntity(id = 4, imgSrc = "https://picsum.photos/id/106/600/400")
-                    )
-
-                    logd("MainActivity observeFlow: 成功从真实接口拉取到数据，立刻向 Adapter 喂数据！")
-                    // 核心关键点：只要这里一执行 setDatas，界面上的空白 Banner 就会瞬间被真实数据点亮！
-                        carouselAdapter.setDatas(realNetworkDataFromApi)
+                    viewModel.uiState.collect { state ->
+                        logd("更新轮播图数据${state.carousels}")
+                        carouselAdapter.setDatas(state.carousels)
+                    }
                 }
             }
         }
