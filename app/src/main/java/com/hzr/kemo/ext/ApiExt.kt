@@ -1,9 +1,7 @@
 package com.hzr.kemo.ext
 
 import com.hzr.kemo.KemoApiException
-import com.hzr.kemo.model.DrinkListEntity
-import com.hzr.kemo.model.KemoResponse
-import kotlin.math.log
+import com.hzr.kemo.api.KemoResponse
 
 
 fun <T> Result<KemoResponse<T>>.unwrapToEntity(): Result<T> {

@@ -1,26 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/menu_home"
         android:enabled="true"
         android:icon="@drawable/icon_home"
         android:title="主页"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/menu_search"
         android:enabled="true"
         android:icon="@drawable/icon_search"
         android:title="搜索"/>
     <item
-        android:id="@+id/page_3"
+        android:id="@+id/menu_cart"
         android:enabled="true"
         android:icon="@drawable/icon_cart"
         android:title="购物车"/>
     <item
-        android:id="@+id/page_4"
+        android:id="@+id/menu_order"
         android:enabled="true"
         android:icon="@drawable/icon_orders"
         android:title="订单"/>
     <item
-        android:id="@+id/page_5"
+        android:id="@+id/menu_mine"
         android:enabled="true"
         android:icon="@drawable/icon_person"
         android:title="我的"/>

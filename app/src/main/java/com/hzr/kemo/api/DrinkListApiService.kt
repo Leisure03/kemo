@@ -2,7 +2,6 @@ package com.hzr.kemo.api
 
 import com.hzr.kemo.model.BannerEntity
 import com.hzr.kemo.model.DrinkListEntity
-import com.hzr.kemo.model.KemoResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get

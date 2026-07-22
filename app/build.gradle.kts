@@ -93,4 +93,5 @@ dependencies {
     implementation(libs.youth.banner)
     implementation(libs.glide)
     implementation(libs.materialratingbar)
+    implementation(libs.fragmentktx)
 }

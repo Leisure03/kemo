@@ -1,4 +1,4 @@
-package com.hzr.kemo.repository
+package com.hzr.kemo.repository.irepo
 
 import com.hzr.kemo.model.BannerEntity
 import com.hzr.kemo.model.DrinkListEntity

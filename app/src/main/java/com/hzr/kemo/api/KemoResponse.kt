@@ -1,4 +1,4 @@
-package com.hzr.kemo.model
+package com.hzr.kemo.api
 
 import kotlinx.serialization.Serializable
 
@@ -8,4 +8,3 @@ data class KemoResponse<T> (
     val msg: String?= null,
     val data: T?= null,
 )
-

@@ -15,20 +15,21 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class MainUiState(
+data class HomeUiState(
     val pageState: LoadState = LoadState.None,
     val drinkList: List<DrinkListEntity> = emptyList(),
     val carousels: List<BannerEntity> = emptyList()
 )
-sealed class UiEvent(){
-    data class ShowToast(val msg: Int)
+
+sealed class HomeUiEvent {
+    data class ShowToast(val msg: Int) : HomeUiEvent()
 }
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val drinkListRepository: IDrinkListRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(MainUiState())
+    private val _uiState = MutableStateFlow(HomeUiState())
     val uiState = _uiState.asStateFlow()
 
     init {
@@ -55,13 +56,13 @@ class MainViewModel @Inject constructor(
     /**
      * 获取主页轮播图列表
      */
-    fun fetchCarouselPics(){
+    fun fetchCarouselPics() {
         viewModelScope.launch {
             _uiState.update { it.copy(pageState = LoadState.Loading) }
             drinkListRepository.getCarousePics().onSuccess { carousels ->
                 logd("获取到轮播图列表${carousels}")
                 _uiState.update { it.copy(carousels = carousels, pageState = LoadState.NotLoading.Complete) }
-            }.onFailure { error->
+            }.onFailure { error ->
                 loge(error)
                 _uiState.update { it.copy(pageState = LoadState.Error(error)) }
             }
