@@ -21,8 +21,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private val searchFragment = SearchFragment()
     private val cartFragment = CartFragment()
     // 预留其他 Fragment
-     private val orderFragment = OrderFragment()
-     private val mineFragment = MineFragment()
+    private val orderFragment = OrderFragment()
+    private val mineFragment = MineFragment()
 
     private var activeFragment: Fragment = homeFragment
 
@@ -52,7 +52,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     true
                 }
                 R.id.menu_cart ->{
-                    logd("切换到搜索页")
+                    logd("切换到购物车页")
                     switchFragment(cartFragment)
                     true
                 }
@@ -61,11 +61,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     switchFragment(orderFragment)
                     true
                 }
-                 R.id.menu_mine -> {
-                     logd("切换到我的页")
-                     switchFragment(mineFragment)
-                     true
-                 }
+                R.id.menu_mine -> {
+                    logd("切换到我的页")
+                    switchFragment(mineFragment)
+                    true
+                }
                 else -> false
             }
         }
@@ -84,6 +84,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             transaction.hide(activeFragment)
                 .add(R.id.fragment_container, targetFragment)
                 .commit()
+            // 确保新添加的 Fragment 能够触发 Insets 监听，动态更新其内部的 guideline
+            binding.root.requestApplyInsets()
         } else {
             transaction.hide(activeFragment)
                 .show(targetFragment)

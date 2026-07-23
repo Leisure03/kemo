@@ -7,7 +7,7 @@
     android:background="@color/bg_color"
     tools:context=".ui.activity.MainActivity">
 
-    <!-- 承载各个 Fragment 的容器 -->
+    <!-- 沉浸式布局架构：容器顶部直接对齐 parent，让所有 Fragment 默认铺满状态栏区域 -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

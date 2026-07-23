@@ -7,7 +7,15 @@
     android:background="@color/bg_color"
     tools:context=".ui.fragment.HomeFragment">
 
-    <!-- ========== 顶部：SearchBar 扁平化（无LinearLayout包裹） ========== -->
+    <!-- 局部动态状态栏分割线 -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <!-- ========== 顶部：SearchBar 扁平化（无LinearLayout包裹），改为依赖于 guideline ========== -->
     <com.google.android.material.search.SearchBar
         android:id="@+id/search_bar"
         android:layout_width="0dp"
@@ -21,7 +29,7 @@
         app:elevation="14dp"
         app:navigationIcon="@android:drawable/ic_menu_search"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_guideline"
         app:layout_constraintEnd_toStartOf="@id/iv_avatar"/>
 
     <com.google.android.material.imageview.ShapeableImageView
