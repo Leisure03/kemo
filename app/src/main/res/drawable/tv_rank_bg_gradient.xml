@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 渐变配置 -->
+    <gradient
+        android:startColor="#F7CC8E"
+        android:endColor="#F8C199"
+        android:angle="0"/>         <!-- 270=从上到下；0=从左到右；90=从下到上；180=从右到左 -->
+    <!-- 圆角（可搭配之前圆角需求） -->
+    <corners android:radius="20dp"/>
+
+</shape>

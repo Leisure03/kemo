@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 底层：纯色圆形背景 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#EBB299" />
+            <size
+                android:width="30dp"
+                android:height="30dp" />
+        </shape>
+    </item>
+
+    <!-- 顶层：居中的前景图标 -->
+    <item
+        android:drawable="@drawable/icon_favorite"
+        android:gravity="center" />
+</layer-list>
